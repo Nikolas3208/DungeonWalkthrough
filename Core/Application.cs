@@ -11,32 +11,33 @@ public class Application
 
     public Application(WindowSettings settings, IGame game)
     {
+        game.PerentApp = this;
         _game = game;
         _window = new Window(this, settings);
     }
 
-    public void Run()
+    public virtual void Run()
     {
         _game.Start();
         _window.Run();
     }
 
-    public void Update(Time deltaTime)
+    public virtual void Update(Time deltaTime)
     {
         _game.Update(deltaTime);
     }
 
-    public void Draw(RenderTarget target, RenderStates states)
+    public virtual void Draw(RenderTarget target, RenderStates states)
     {
         _game.Draw(target, states);
     }
 
-    public void Resize(uint width, uint height)
+    public virtual void Resize(uint width, uint height)
     {
-
+        _game.Resize(width, height);
     }
-    public void Close()
+    public virtual void Close()
     {
-        
+        _game.Close();
     }
 }

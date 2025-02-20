@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="SFML.Net" Version="2.6.0" />
     <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
 </Project>
