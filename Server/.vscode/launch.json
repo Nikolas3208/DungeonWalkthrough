@@ -8,13 +8,8 @@
             "name": "C#: Server Debug",
             "type": "dotnet",
             "request": "launch",
-            "projectPath": "${workspaceFolder}/Server/Server.csproj"
-        },
-    {
-        "name": "C#: Client Debug",
-        "type": "dotnet",
-        "request": "launch",
-        "projectPath": "${workspaceFolder}/Client/Client.csproj"
-    }
+            "projectPath": "${workspaceFolder}/Server.csproj"
+        }
+
     ]
 }
