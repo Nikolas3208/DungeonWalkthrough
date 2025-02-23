@@ -24,7 +24,7 @@ public class AnimSprite : Transformable, Drawable
     /// <summary>
     /// Родитель анимаия
     /// </summary>
-    public Animation PerentAnim { get; set; }
+    public Animation? PerentAnim { get; set; }
 
     /// <summary>
     /// Цвет
@@ -72,7 +72,7 @@ public class AnimSprite : Transformable, Drawable
     /// <returns> позиция и размер спрайта на листе </returns>
     public IntRect GetTextureRect()
     {
-        var currFrame = PerentAnim.GetFrame(_speed);
+        var currFrame = PerentAnim!.GetFrame(_speed);
 
         return SpriteSheet!.GetTextureRect(currFrame.SpriteId);
     }
@@ -90,5 +90,4 @@ public class AnimSprite : Transformable, Drawable
         states.Transform *= Transform;
         target.Draw(_rect, states);
     }
-
 }
