@@ -1,5 +1,5 @@
 ﻿using Core;
-using Core.Graphics;
+using Core.Window;
 using SFML.Window;
 
 namespace DungeonWalkthrough;

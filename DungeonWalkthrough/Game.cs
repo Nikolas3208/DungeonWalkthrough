@@ -1,7 +1,7 @@
 using SFML.Graphics;
 using SFML.System;
 using Core;
-using Common.Content;
+using Core.Content;
 
 namespace DungeonWalkthrough;
 
@@ -14,7 +14,7 @@ public class Game : IGame
     public Game()
     {
         AssetManager = new AssetManager("Assets");
-        AssetManager.Load();
+        AssetManager.LoadAssets();
     }
 
     public void Start()
