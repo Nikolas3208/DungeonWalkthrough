@@ -7,7 +7,7 @@ public class SpriteSheet
     private bool _abIsCount = false;
 
     /// <summary>
-    /// Спрайт
+    /// Спрайтлист
     /// </summary>
     public Sprite Sprite { get; }
 
@@ -17,25 +17,25 @@ public class SpriteSheet
     public Texture Texture { get => Sprite.Texture; }
 
     /// <summary>
-    /// Размер одного спрайта по ширине
+    /// Размер одного спрайта по ширине на листе
     /// </summary>
     public int SubWidth { get; protected set; }
     /// <summary>
-    /// Размер одного спрайта по высоте
+    /// Размер одного спрайта по высоте на листе
     /// </summary>
     public int SubHeight { get; protected set; }
 
     /// <summary>
-    /// Количиство спрайтов по шырине
+    /// Количиство спрайтов по шырине на листе
     /// </summary>
     public int SubCountWidth { get; protected set; }
     /// <summary>
-    /// Количесто спрайтов по высоте
+    /// Количесто спрайтов по высоте на листе
     /// </summary>
     public int SubCountHeight { get; protected set; }
 
     /// <summary>
-    /// Расстояние между спрайтами
+    /// Расстояние между спрайтами на листе
     /// </summary>
     public int BorderSize { get; set; }
 
@@ -64,7 +64,7 @@ public class SpriteSheet
     }
 
     /// <summary>
-    /// Создание спрайтлиста
+    /// Спрайт лист
     /// </summary>
     /// <param name="sprite"> Спрайт </param>
     /// <param name="isSmooth"> Сглаживание </param>
@@ -75,7 +75,7 @@ public class SpriteSheet
     }
 
     /// <summary>
-    /// Созданиие спрайтлиста
+    /// Спрайт лист
     /// </summary>
     /// <param name="texture"> Текстура </param>
     /// <param name="isSmooth"> Сглаживание </param>
@@ -85,6 +85,15 @@ public class SpriteSheet
         IsSmooth = isSmooth;
     }
 
+    /// <summary>
+    /// Спрайт лист
+    /// </summary>
+    /// <param name="a"> Размер спрайта на листе по Ширине </param>
+    /// <param name="b"> Зазмер спрайта на листе по Высоте </param>
+    /// <param name="abIsCount"> Ab это количество спрайтов на листе? </param>
+    /// <param name="borderSize"> Растояние между спрайтами на листе </param>
+    /// <param name="texture"> Текстура </param>
+    /// <param name="isSmooth"> Сглажывание </param>
     public SpriteSheet(int a, int b, bool abIsCount, int borderSize, Texture texture, bool isSmooth = false) : this(texture, isSmooth)
     {
         if (abIsCount)

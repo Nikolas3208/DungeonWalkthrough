@@ -60,6 +60,10 @@ public class Animator : Transformable, Drawable
         return _animations[name];
     }
 
+    /// <summary>
+    /// Играть анимаию
+    /// </summary>
+    /// <param name="name"> Имя анимации </param>
     public void Play(string name)
     {
         if (!_animations.ContainsKey(name))
@@ -71,6 +75,11 @@ public class Animator : Transformable, Drawable
         _currentAnimationName = name;
     }
 
+    /// <summary>
+    /// Рисовать анимаию
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="states"></param>
     public void Draw(RenderTarget target, RenderStates states)
     {
         states.Transform *= Transform;
