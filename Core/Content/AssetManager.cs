@@ -27,6 +27,9 @@ public class AssetManager
     /// </summary>
     public void LoadAssets()
     {
+        if (!Directory.Exists(_path))
+            return;
+
         var files = Directory.GetFiles(_path, "*", SearchOption.AllDirectories);
 
         foreach (var file in files)
