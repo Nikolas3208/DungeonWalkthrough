@@ -8,8 +8,8 @@ public class Animator : Transformable, Drawable
     /// Именной список анимаций
     /// </summary>
     private SortedDictionary<string, Animation> _animations;
-    private Animation _currentAnimation;
-    private string _currentAnimationName;
+    private Animation? _currentAnimation;
+    private string _currentAnimationName = string.Empty;
 
     public Animator()
     {
@@ -75,6 +75,6 @@ public class Animator : Transformable, Drawable
     {
         states.Transform *= Transform;
 
-        _currentAnimation.Draw(target, states);
+        _currentAnimation!.Draw(target, states);
     }
 }
