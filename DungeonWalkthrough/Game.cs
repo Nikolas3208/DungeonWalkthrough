@@ -7,6 +7,9 @@ namespace DungeonWalkthrough;
 
 public class Game : IGame
 {
+    /// <summary>
+    /// Менеджер асетов
+    /// </summary>
     public static AssetManager? AssetManager;
 
     public Application? PerentApp { get; set; }
@@ -22,6 +25,10 @@ public class Game : IGame
 
     }
 
+    /// <summary>
+    /// Обновление игры
+    /// </summary>
+    /// <param name="deltaTime"> Время кадра </param>
     public void Update(Time deltaTime)
     {
 
