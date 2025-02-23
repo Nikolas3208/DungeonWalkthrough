@@ -4,6 +4,8 @@ namespace Core.Graphics;
 
 public class SpriteSheet
 {
+    private bool _abIsCount = false;
+
     /// <summary>
     /// Спрайт
     /// </summary>
@@ -13,29 +15,34 @@ public class SpriteSheet
     /// Текстура спрайтлиста
     /// </summary>
     public Texture Texture { get => Sprite.Texture; }
-    
+
     /// <summary>
     /// Размер одного спрайта по ширине
     /// </summary>
-    public int SubWidth { get; }
+    public int SubWidth { get; protected set; }
     /// <summary>
     /// Размер одного спрайта по высоте
     /// </summary>
-    public int SubHeight { get; }
+    public int SubHeight { get; protected set; }
 
     /// <summary>
     /// Количиство спрайтов по шырине
     /// </summary>
-    public int SubCountWidth { get; }
+    public int SubCountWidth { get; protected set; }
     /// <summary>
     /// Количесто спрайтов по высоте
     /// </summary>
-    public int SubCountHeight { get; }
+    public int SubCountHeight { get; protected set; }
 
     /// <summary>
     /// Расстояние между спрайтами
     /// </summary>
     public int BorderSize { get; set; }
+
+    /// <summary>
+    /// Аb количество елементов по ширине и высоте?
+    /// </summary>
+    public bool AbIsCount { get => _abIsCount; set { _abIsCount = value; UpdateAb(value); } }
 
     /// <summary>
     /// Сглажывание изображения
@@ -78,6 +85,25 @@ public class SpriteSheet
         IsSmooth = isSmooth;
     }
 
+    public SpriteSheet(int a, int b, bool abIsCount, int borderSize, Texture texture, bool isSmooth = false) : this(texture, isSmooth)
+    {
+        if (abIsCount)
+        {
+            SubCountWidth = a;
+            SubCountHeight = b;
+        }
+        else
+        {
+            SubWidth = a;
+            SubHeight = b;
+        }
+
+        if (borderSize > 0)
+            BorderSize = borderSize + 1;
+
+        AbIsCount = abIsCount;
+    }
+
     /// <summary>
     /// Получить размер и позиию спрайта по номеру
     /// </summary>
@@ -93,4 +119,26 @@ public class SpriteSheet
 
         return new IntRect(x, y, SubWidth, SubHeight);
     }
+    /// <summary>
+    /// Обновление размера и количиства спрайтов
+    /// </summary>
+    /// <param name="abisCount"></param>
+    /// <exception cref="Exception"></exception>
+    private void UpdateAb(bool abisCount)
+    {
+        if (Texture == null)
+            throw new Exception("Texture is null");
+
+        if (!abisCount)
+        {
+            SubWidth = (int)(Texture.Size.X / SubCountWidth);
+            SubHeight = (int)(Texture.Size.Y / SubCountHeight);
+        }
+        else
+        {
+            SubCountWidth = (int)(Texture.Size.X / SubWidth);
+            SubCountHeight = (int)(Texture.Size.Y / SubHeight);
+        }
+    }
+
 }
