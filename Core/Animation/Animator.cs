@@ -1,11 +1,15 @@
+using SFML.Graphics;
+
 namespace Core.Animation;
 
-public class Animator
+public class Animator : Transformable, Drawable
 {
     /// <summary>
     /// Именной список анимаций
     /// </summary>
     private SortedDictionary<string, Animation> _animations;
+    private Animation _currentAnimation;
+    private string _currentAnimationName;
 
     public Animator()
     {
@@ -24,6 +28,9 @@ public class Animator
             return false;
 
         _animations.Add(name, animation);
+
+        _currentAnimation = animation;
+        _currentAnimationName = name;
         return true;
     }
 
@@ -51,5 +58,23 @@ public class Animator
             return null;
 
         return _animations[name];
+    }
+
+    public void Play(string name)
+    {
+        if (!_animations.ContainsKey(name))
+            return;
+        if (name == _currentAnimationName)
+            return;
+
+        _currentAnimation = _animations[name];
+        _currentAnimationName = name;
+    }
+
+    public void Draw(RenderTarget target, RenderStates states)
+    {
+        states.Transform *= Transform;
+
+        _currentAnimation.Draw(target, states);
     }
 }

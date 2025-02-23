@@ -12,14 +12,18 @@ public class AnimationFrame
     /// </summary>
     public int SpriteId { get; }
 
+    public float Time { get; }
+
     /// <summary>
     /// Кадр анимации
     /// </summary>
     /// <param name="frameId"> номер кадра </param>
     /// <param name="spriteId"> номер спрайта </param>
-    public AnimationFrame(int frameId, int spriteId)
+    /// <param name="time"> Время кадра </param>
+    public AnimationFrame(int frameId, int spriteId, float time)
     {
         FrameId = frameId;
         SpriteId = spriteId;
+        Time = time;
     }
 }
