@@ -6,9 +6,18 @@ namespace Core;
 
 public class Application
 {
+
     private IGame _game;
     private Window _window;
 
+    /// <summary>
+    /// Приложение хранит окно и саму игру
+    /// </summary>
+    /// <param name="settings"> Настройки окна </param>
+    /// <param name="game"> 
+    // Елемент наследуемый от интерфейса IGame,
+    // 
+    //  </param>
     public Application(WindowSettings settings, IGame game)
     {
         game.PerentApp = this;

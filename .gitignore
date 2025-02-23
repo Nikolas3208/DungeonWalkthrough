@@ -11,8 +11,8 @@
 [Dd]ebug/
 [Rr]elease/
 x64/
-[Bb]in/
 [Oo]bj/
+[Bb]in/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
@@ -67,6 +67,10 @@ _ReSharper*/
 
 # Click-Once directory
 publish/
+*.png
+*.jpg
+*.jpeg
+*.wav
 
 # Publish Web Output
 *.Publish.xml
