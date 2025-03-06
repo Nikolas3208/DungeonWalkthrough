@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ECCE03EF-7D48-4603-9AF0-A900563415BB}|DungeonWalkthrough\\DungeonWalkthrough.csproj|c:\\users\\pc\\source\\repos\\dungeonwalkthrough\\dungeonwalkthrough\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECCE03EF-7D48-4603-9AF0-A900563415BB}|DungeonWalkthrough\\DungeonWalkthrough.csproj|solutionrelative:dungeonwalkthrough\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 183,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\DungeonWalkthrough\\Game.cs",
+              "RelativeDocumentMoniker": "DungeonWalkthrough\\Game.cs",
+              "ToolTip": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\DungeonWalkthrough\\Game.cs",
+              "RelativeToolTip": "DungeonWalkthrough\\Game.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T17:43:12.058Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

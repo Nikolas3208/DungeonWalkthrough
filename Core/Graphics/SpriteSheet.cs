@@ -19,20 +19,20 @@ public class SpriteSheet
     /// <summary>
     /// Размер одного спрайта по ширине на листе
     /// </summary>
-    public int SubWidth { get; protected set; }
+    public int SubWidth { get; protected set; } = 1;
     /// <summary>
     /// Размер одного спрайта по высоте на листе
     /// </summary>
-    public int SubHeight { get; protected set; }
+    public int SubHeight { get; protected set; } = 1;
 
     /// <summary>
     /// Количиство спрайтов по шырине на листе
     /// </summary>
-    public int SubCountWidth { get; protected set; }
+    public int SubCountWidth { get; protected set; } = 1;
     /// <summary>
     /// Количесто спрайтов по высоте на листе
     /// </summary>
-    public int SubCountHeight { get; protected set; }
+    public int SubCountHeight { get; protected set; } = 1;
 
     /// <summary>
     /// Расстояние между спрайтами на листе
@@ -42,7 +42,7 @@ public class SpriteSheet
     /// <summary>
     /// Аb количество елементов по ширине и высоте?
     /// </summary>
-    public bool AbIsCount { get => _abIsCount; set { _abIsCount = value; UpdateAb(value); } }
+    public bool AbIsCount { get => _abIsCount; set { UpdateAb(value); _abIsCount = value; } }
 
     /// <summary>
     /// Сглажывание изображения
@@ -74,6 +74,39 @@ public class SpriteSheet
         IsSmooth = isSmooth;
     }
 
+     /// <summary>
+    /// Спрайт лист
+    /// </summary>
+    /// <param name="a"> Размер спрайта на листе по Ширине </param>
+    /// <param name="b"> Зазмер спрайта на листе по Высоте </param>
+    /// <param name="abIsCount"> Ab это количество спрайтов на листе? </param>
+    /// <param name="borderSize"> Растояние между спрайтами на листе </param>
+    /// <param name="texture"> Текстура </param>
+    /// <param name="isSmooth"> Сглажывание </param>
+    public SpriteSheet(int a, int b, bool abIsCount, int borderSize, Sprite sprite, bool isSmooth = false) : this(sprite, isSmooth)
+    {
+        if (abIsCount)
+        {
+            SubWidth = (int)Math.Ceiling((float)sprite.Texture.Size.X / a);
+            SubHeight = (int)Math.Ceiling((float)sprite.Texture.Size.Y / b);
+            SubCountWidth = a;
+            SubCountHeight = b;
+        }
+        else
+        {
+            SubWidth = a;
+            SubHeight = b;
+            SubCountWidth = (int)Math.Ceiling((float)sprite.Texture.Size.X / a);
+            SubCountHeight = (int)Math.Ceiling((float)sprite.Texture.Size.Y / b);
+        }
+
+        if (borderSize > 0)
+            BorderSize = borderSize + 1;
+
+        AbIsCount = abIsCount;
+    }
+
+
     /// <summary>
     /// Спрайт лист
     /// </summary>
@@ -98,6 +131,8 @@ public class SpriteSheet
     {
         if (abIsCount)
         {
+            SubWidth = (int)Math.Ceiling((float)texture.Size.X / a);
+            SubHeight = (int)Math.Ceiling((float)texture.Size.Y / b);
             SubCountWidth = a;
             SubCountHeight = b;
         }
@@ -105,6 +140,8 @@ public class SpriteSheet
         {
             SubWidth = a;
             SubHeight = b;
+            SubCountWidth = (int)Math.Ceiling((float)texture.Size.X / a);
+            SubCountHeight = (int)Math.Ceiling((float)texture.Size.Y / b);
         }
 
         if (borderSize > 0)
@@ -120,11 +157,11 @@ public class SpriteSheet
     /// <returns> Возвращает размер и позицию выбраного спрайта </returns>
     public IntRect GetTextureRect(int id)
     {
-        int y = (id / SubCountWidth);
+        int y = id / SubCountWidth;
         int x = id - (y * SubCountWidth);
 
-        y *= SubHeight + (id / SubCountHeight) * BorderSize;
-        x *= SubWidth + (id / SubCountWidth) * BorderSize;
+        y *= SubHeight + id / SubCountHeight * BorderSize;
+        x *= SubWidth + id / SubCountWidth * BorderSize;
 
         return new IntRect(x, y, SubWidth, SubHeight);
     }
@@ -135,8 +172,11 @@ public class SpriteSheet
     /// <exception cref="Exception"></exception>
     private void UpdateAb(bool abisCount)
     {
+        if (abisCount == AbIsCount)
+            return;
+
         if (Texture == null)
-            throw new Exception("Texture is null");
+                throw new Exception("Texture is null");
 
         if (!abisCount)
         {

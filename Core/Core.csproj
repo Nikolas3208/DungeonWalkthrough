@@ -6,6 +6,5 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="SFML.Net" Version="2.6.0" />
-    <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 </Project>

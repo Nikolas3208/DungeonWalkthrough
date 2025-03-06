@@ -1,3 +1,5 @@
+using Core.Content;
+using Core.Physics;
 using SFML.Graphics;
 using SFML.System;
 
@@ -5,6 +7,10 @@ namespace Core;
 
 public interface IGame
 {
+    AssetManager? AssetManager { get; }
+
+    World? World { get; }
+
     /// <summary>
     /// Родительское прилодение
     /// </summary>

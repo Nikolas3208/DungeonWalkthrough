@@ -30,7 +30,20 @@ public struct WindowSettings
     /// </summary>
     public bool VSync { get; set; } = false;
 
-    public ContextSettings ContextSettings{ get; set; }
+    /// <summary>
+    /// ContextSettings
+    /// </summary>
+    public ContextSettings ContextSettings { get; set; }
+
+    /// <summary>
+    /// Настройки окна по умольчанию
+    /// </summary>
+    public WindowSettings()
+    {
+        VideoMode = new VideoMode(800, 600);
+        Title = "Window";
+        Styles = Styles.Default;
+    }
 
     /// <summary>
     /// Екземпляр настроек окна

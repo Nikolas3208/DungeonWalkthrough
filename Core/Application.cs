@@ -9,12 +9,17 @@ public class Application
     /// <summary>
     /// Екземпляр игры
     /// </summary>
-    private IGame _game;
+    protected IGame? _game;
 
     /// <summary>
     /// Окно приложения
     /// </summary>
-    private GameWindow _window;
+    protected GameWindow? _window;
+
+    public Application(IGame game)
+    {
+        _game = game;
+    }
 
     /// <summary>
     /// Приложение хранит окно и саму игру
@@ -33,8 +38,8 @@ public class Application
     /// </summary>
     public virtual void Run()
     {
-        _game.Start();
-        _window.Run();
+        _game!.Start();
+        _window!.Run();
     }
 
     /// <summary>
@@ -43,7 +48,7 @@ public class Application
     /// <param name="deltaTime"> Время кадра </param>
     public virtual void Update(Time deltaTime)
     {
-        _game.Update(deltaTime);
+        _game!.Update(deltaTime);
     }
 
     /// <summary>
@@ -53,7 +58,7 @@ public class Application
     /// <param name="states"></param>
     public virtual void Draw(RenderTarget target, RenderStates states)
     {
-        _game.Draw(target, states);
+        _game!.Draw(target, states);
     }
 
     /// <summary>
@@ -63,7 +68,7 @@ public class Application
     /// <param name="height"> Высота </param>
     public virtual void Resize(uint width, uint height)
     {
-        _game.Resize(width, height);
+        _game!.Resize(width, height);
     }
 
     /// <summary>
@@ -71,6 +76,6 @@ public class Application
     /// </summary>
     public virtual void Close()
     {
-        _game.Close();
+        _game!.Close();
     }
 }

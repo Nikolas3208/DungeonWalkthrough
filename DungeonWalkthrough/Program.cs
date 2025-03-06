@@ -13,6 +13,7 @@ public class Program
         var settings = new WindowSettings(VideoMode.DesktopMode, "Dungeon Walkthrough");
 
         var app = new Application(settings, game);
+
         app.Run();
     }
 }

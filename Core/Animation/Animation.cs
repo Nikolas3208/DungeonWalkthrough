@@ -70,7 +70,11 @@ public class Animation : Transformable, Drawable
     /// Установить кадры анимации с заменой предыдуших
     /// </summary>
     /// <param name="frames"> Кадры анимаии </param>
-    public void SetAnimationFrames(params AnimationFrame[] frames) => _frames = frames;
+    public void SetAnimationFrames(params AnimationFrame[] frames)
+    {
+        _curentFrame = frames[0];
+        _frames = frames;
+    }
 
     /// <summary>
     /// Получить кадры анимаии
@@ -82,7 +86,11 @@ public class Animation : Transformable, Drawable
     /// Установить спрайт анимации
     /// </summary>
     /// <param name="animSprite"> Спрайт анимаии </param>
-    public void SetAnimSprite(AnimSprite animSprite) => _animSprite = animSprite;
+    public void SetAnimSprite(AnimSprite animSprite)
+    {
+        animSprite.PerentAnim = this;
+        _animSprite = animSprite;
+    } 
 
     /// <summary>
     /// Получить спрайт анимации
@@ -124,7 +132,8 @@ public class Animation : Transformable, Drawable
     {
         _timer = 0;
         _currentFrameIndex = 0;
-        _curentFrame = _frames![_currentFrameIndex];
+        if (_frames != null)
+            _curentFrame = _frames![_currentFrameIndex];
     }
 
     /// <summary>
