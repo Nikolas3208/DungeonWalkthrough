@@ -122,4 +122,9 @@ public class GameWindow
         _perentApp.Close();
         _window.Close();
     }
+
+    public Vector2u GetSize()
+    {
+        return _window.Size;
+    }
 }

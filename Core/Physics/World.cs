@@ -1,6 +1,5 @@
 using Core.Physics.Colliders;
 using Core.Physics.Collision;
-using Core.Physics.Transformation;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
@@ -29,7 +28,7 @@ public class World
         return _rigidBodies.Remove(rigidBody);
     }
     public RigidBody? GetRigidBody(Guid id) => _rigidBodies.FirstOrDefault(c => c.Id == id);
-    public T? GetCollisionObject<T>(Guid id) where T : RigidBody
+    public T? GetRigidBody<T>(Guid id) where T : RigidBody
     {
         return (T)_rigidBodies.FirstOrDefault(c => c.Id == id)!;
     }
@@ -54,18 +53,21 @@ public class World
                             {
                                 if (CollisionDetected.AABBvsAABB(rb.Collider.ColliderShape.AABB.UpdatePosition(rb.Position), rb2.Collider.ColliderShape.AABB.UpdatePosition(rb2.Position)))
                                 {
-                                    if (rb.Position.Y - rb.OldPosition.Y != 0 && rb.Position.X - rb.OldPosition.X == 0)
-                                        rb.Velocity = new Vector2f(rb.Velocity.X, 0);
-                                    else if (rb.Position.X - rb.OldPosition.X != 0 && rb.Position.Y - rb.OldPosition.Y == 0)
-                                        rb.Velocity = new Vector2f(0, rb.Velocity.Y);
-                                    else if (rb.Position.X - rb.OldPosition.X != 0 && rb.Position.Y - rb.OldPosition.Y != 0)
-                                        rb.Velocity = new Vector2f(0, 0);
-
-
-                                    rb.IsCollision = true;
-                                    if (!CollisionDetected.AABBvsAABB(rb.Collider.ColliderShape.AABB.UpdatePosition(rb.OldPosition), rb2.Collider.ColliderShape.AABB.UpdatePosition(rb2.OldPosition)))
+                                    if (!rb2.IsTrigger)
                                     {
-                                        rb.Position = rb.OldPosition;
+                                        if (rb.Position.Y - rb.OldPosition.Y != 0 && rb.Position.X - rb.OldPosition.X == 0)
+                                            rb.Velocity = new Vector2f(rb.Velocity.X, 0);
+                                        else if (rb.Position.X - rb.OldPosition.X != 0 && rb.Position.Y - rb.OldPosition.Y == 0)
+                                            rb.Velocity = new Vector2f(0, rb.Velocity.Y);
+                                        else if (rb.Position.X - rb.OldPosition.X != 0 && rb.Position.Y - rb.OldPosition.Y != 0)
+                                            rb.Velocity = new Vector2f(0, 0);
+
+
+                                        rb.IsCollision = true;
+                                        if (!CollisionDetected.AABBvsAABB(rb.Collider.ColliderShape.AABB.UpdatePosition(rb.OldPosition), rb2.Collider.ColliderShape.AABB.UpdatePosition(rb2.OldPosition)))
+                                        {
+                                            rb.Position = rb.OldPosition;
+                                        }
                                     }
                                 }
                             }

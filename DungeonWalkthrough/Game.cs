@@ -6,6 +6,8 @@ using Core.Physics;
 using Core.Utils.TmxLoader;
 using Core.Graphics.TileMap;
 using Core.Physics.Colliders;
+using Core.Graphics;
+using Core.Window;
 
 namespace DungeonWalkthrough;
 
@@ -20,6 +22,8 @@ public class Game : IGame
     /// Родительское приложение
     /// </summary>
     public Application? PerentApp { get; set; }
+
+    public Camera Camera { get; set; }
 
     AssetManager? IGame.AssetManager => AssetManager;
 
@@ -45,8 +49,10 @@ public class Game : IGame
     /// <summary>
     /// Старт игры
     /// </summary>
-    public void Start()
+    public void Start(GameWindow gameWindow)
     {
+        Camera = new Camera(gameWindow.GetSize(), new Vector2f());
+
         var map = TmxLoader.Load("..\\..\\Content\\Maps\\TestLevel\\testLevel.tmx");
         tileMapRender = new TileMapRender(map, this);
         tileMapRender.CreateRenderMap();
@@ -54,7 +60,7 @@ public class Game : IGame
         var rb = World!.CreateRigidBody(new Collider(ColliderType.Rectangle, new ColliderShape(new AABB(new Vector2f(45, 45)))), BodyType.Daynamic);
         rb.IsGravity = false;
 
-        Player = new Player(rb);
+        Player = new Player(rb, Camera);
 
         rb.Position = new Vector2f(1700, 350);
     }
@@ -67,6 +73,9 @@ public class Game : IGame
     {
         World!.Update(deltaTime);
         Player.Update(deltaTime);
+
+        Vector2f camPos = Player.Position - (Vector2f)(Camera.Size / 2);
+        Camera = Camera.SetPosition(camPos);
     }
 
     /// <summary>
@@ -76,10 +85,12 @@ public class Game : IGame
     /// <param name="state"></param>
     public void Draw(RenderTarget target, RenderStates states)
     {
+        target.SetView(new View(new FloatRect(Camera.Position, (Vector2f)Camera.Size)));
+
         target.Clear(Color.White);
 
         tileMapRender.Draw(target, states);
-        //World!.Draw(target, states);
+        World!.Draw(target, states);
         Player.Draw(target, states);
     }
 

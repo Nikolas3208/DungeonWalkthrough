@@ -31,6 +31,8 @@ public class Application
         game.PerentApp = this;
         _game = game;
         _window = new GameWindow(this, settings);
+
+
     }
 
     /// <summary>
@@ -38,7 +40,7 @@ public class Application
     /// </summary>
     public virtual void Run()
     {
-        _game!.Start();
+        _game!.Start(_window);
         _window!.Run();
     }
 

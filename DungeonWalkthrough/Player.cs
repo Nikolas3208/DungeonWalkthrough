@@ -11,16 +11,20 @@ namespace DungeonWalkthrough;
 
 public class Player : TransformObject, Drawable
 {
-    private RigidBody rb;
-    private Animator animator;
+    private float speed = 2;
+    private float maxSpeed = 3.7f;
 
-    public Player(RigidBody rb)
+    private RigidBody rb;
+    private Camera _camera;
+    private Animator _animator;
+    AnimSprite idle;
+    public Player(RigidBody rb, Camera camera)
     {
         this.rb = rb;
+        _camera = camera;
 
         var ss = new SpriteSheet(6, 8, true, 0, Game.AssetManager!.GetAsset<SpriteAsset>("Warrior_Red")!.Sprite);
-        animator = new Animator();
-        animator.Origin = new Vector2f(-28, animator.Origin.Y - 15);
+        _animator = new Animator();
 
         var anim = new Animation("Idle");
         anim.SetAnimationFrames(
@@ -31,12 +35,13 @@ public class Player : TransformObject, Drawable
             new AnimationFrame(4, 4, 0.4f),
             new AnimationFrame(5, 5, 0.4f));
 
-        var animSprite = new AnimSprite(ss);
-        animSprite.Scale = new Vector2f(0.8f, 0.8f);
+        idle = new AnimSprite(ss);
+        idle.Scale = new Vector2f(0.8f, 0.8f);
+        _animator.Origin = new Vector2f(ss.SubWidth / 4, ss.SubHeight / 3);
 
-        anim.SetAnimSprite(animSprite);
+        anim.SetAnimSprite(idle);
 
-        animator.AddAnimation("Idle", anim);
+        _animator.AddAnimation("Idle", anim);
 
         var anim2 = new Animation("Run");
         anim2.SetAnimationFrames(
@@ -52,7 +57,7 @@ public class Player : TransformObject, Drawable
 
         anim2.SetAnimSprite(animSprite2);
 
-        animator.AddAnimation("Run", anim2);
+        _animator.AddAnimation("Run", anim2);
     }
 
     public void Update(Time deltaTime)
@@ -63,46 +68,78 @@ public class Player : TransformObject, Drawable
         bool isMoveRight = Keyboard.IsKeyPressed(Keyboard.Key.D);
 
         bool isMove = isMoveUp || isMoveDown || isMoveLeft || isMoveRight;
+        bool isHorivontalMove = isMoveLeft || isMoveRight;
+        bool isVerticalMove = isMoveUp || isMoveDown;
 
         if (isMove)
         {
-            animator.Play("Run");
+            _animator.Play("Run");
+            if (isVerticalMove)
+            {
+                //rb.Velocity = new Vector2f(rb.Velocity.X, 0);
+                
+                if (isMoveUp)
+                {
+                    rb.Velocity -= new Vector2f(0, speed * deltaTime.AsSeconds());
+                    if (rb.Velocity.Y <= -maxSpeed)
+                        rb.Velocity = new Vector2f(rb.Velocity.X, -maxSpeed);
+                }
+                if (isMoveDown)
+                {
+                    rb.Velocity += new Vector2f(0, speed * deltaTime.AsSeconds());
+                    if (rb.Velocity.Y >= maxSpeed)
+                        rb.Velocity = new Vector2f(rb.Velocity.X, maxSpeed);
+                }
+            }
+            else
+            {
+                rb.Velocity = new Vector2f(rb.Velocity.X, 0);
+            }
+            if (isHorivontalMove)
+            {
+                //rb.Velocity = new Vector2f(0, rb.Velocity.Y);
 
-            if (isMoveUp)
-            {
-                rb.Velocity -= new Vector2f(0, 10 * deltaTime.AsSeconds());
+                if (isMoveLeft)
+                {
+                    _animator.Scale = new Vector2f(-1, 1);
+                    _animator.Origin = new Vector2f(192 / 2, 192 / 3);
+                    rb.Velocity -= new Vector2f(speed * deltaTime.AsSeconds(), 0);
+                    if (rb.Velocity.X <= -maxSpeed)
+                        rb.Velocity = new Vector2f(-maxSpeed, rb.Velocity.Y);
+                }
+                if (isMoveRight)
+                {
+                    _animator.Scale = new Vector2f(1, 1);
+                    _animator.Origin = new Vector2f(192 / 4, 192 / 3);
+                    rb.Velocity += new Vector2f(speed * deltaTime.AsSeconds(), 0);
+                    if (rb.Velocity.X >= maxSpeed)
+                        rb.Velocity = new Vector2f(maxSpeed, rb.Velocity.Y);
+                }
             }
-            if (isMoveDown)
+            else
             {
-                rb.Velocity += new Vector2f(0, 10 * deltaTime.AsSeconds());
-            }
-            if (isMoveLeft)
-            {
-                animator.Scale = new Vector2f(-1, 1);
-                animator.Origin = new Vector2f(28, animator.Origin.Y);
-                rb.Velocity -= new Vector2f(10 * deltaTime.AsSeconds(), 0);
-            }
-            if (isMoveRight)
-            {
-                animator.Scale = new Vector2f(1, 1);
-                animator.Origin = new Vector2f(-28, animator.Origin.Y);
-                rb.Velocity += new Vector2f(10 * deltaTime.AsSeconds(), 0);
+                rb.Velocity = new Vector2f(0, rb.Velocity.Y);
             }
         }
         else
         {
-            animator.Play("Idle");
+            //_animator.Origin = new Vector2f(192 / 4, 192 / 3);
+            _animator.Play("Idle");
 
             rb.Velocity = new Vector2f();
         }
 
         UpdateTransform(rb);
+        Vector2f camPos = Position - (Vector2f)(_camera.Size / 2);
+        _camera = _camera.SetPosition(camPos);
     }
 
     public void Draw(RenderTarget target, RenderStates states)
     {
         states.Transform *= Transform;
 
-        animator.Draw(target, states);
+
+
+        _animator.Draw(target, states);
     }
 }

@@ -1,5 +1,7 @@
 using Core.Content;
+using Core.Graphics;
 using Core.Physics;
+using Core.Window;
 using SFML.Graphics;
 using SFML.System;
 
@@ -15,11 +17,13 @@ public interface IGame
     /// Родительское прилодение
     /// </summary>
     Application? PerentApp { get; set; }
+    
+    Camera Camera { get; set; }
 
     /// <summary>
     /// Старт игры
     /// </summary>
-    void Start();
+    void Start(GameWindow gameWindow);
 
     /// <summary>
     /// Обновление игры

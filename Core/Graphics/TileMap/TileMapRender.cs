@@ -1,4 +1,5 @@
 using System.Diagnostics.Metrics;
+using Core.Animation;
 using Core.Content;
 using Core.Physics;
 using Core.Physics.Colliders;
@@ -11,7 +12,7 @@ namespace Core.Graphics.TileMap;
 public class TileMapRender
 {
     private Map _map;
-    private Dictionary<string, List<Sprite>> _tiles;
+    private Dictionary<string, List<Tile>> _tiles;
     private List<RigidBody> _rigidBodies;
 
     private readonly IGame _game;
@@ -20,7 +21,7 @@ public class TileMapRender
         _map = map;
         _game = game;
 
-        _tiles = new Dictionary<string, List<Sprite>>();
+        _tiles = new Dictionary<string, List<Tile>>();
         _rigidBodies = new List<RigidBody>();
     }
 
@@ -31,7 +32,7 @@ public class TileMapRender
 
         foreach (var mapLayer in _map.MapLayers)
         {
-            var tiles = new List<Sprite>();
+            var tiles = new List<Tile>();
 
             for (int x = 0; x < mapLayer.Width; x++)
             {
@@ -61,15 +62,38 @@ public class TileMapRender
                                 var asset = _game.AssetManager!.GetAsset<SpriteAsset>(ts.Image.Name);
 
                                 var ss = new SpriteSheet(ts.TileWidth, ts.TileHeight, false, 0, asset!.Sprite);
+                                Tile? tile = null;
 
-                                var tile = new Sprite(ss.Sprite);
-                                tile.TextureRect = ss.GetTextureRect(id - ts.FirstId);
+                                if (ts.TileFrames == null)
+                                {
+                                    tile = new Tile(new Sprite(ss.Sprite));
+                                    tile.TextureRect = ss.GetTextureRect(id - ts.FirstId);
+
+
+                                }
+                                else
+                                {
+                                    List<AnimationFrame> frames = [];
+                                    for (int i = 0; i < ts.TileFrames.Count; i++)
+                                    {
+                                        frames.Add(new AnimationFrame(i, ts.TileFrames[i].TileId, ts.TileFrames[i].Duration));
+                                    }
+
+                                    Animator animator = new Animator();
+                                    var anim = new Animation.Animation(ts.Image.Name, frames.ToArray());
+                                    anim.SetAnimSprite(new AnimSprite(ss));
+
+                                    animator.AddAnimation(ts.Image.Name, anim);
+
+                                    tile = new Tile(animator);
+                                }
 
                                 int yOffset = ss.SubWidth / _map.TileHeight - 1;
 
-                                tile.Position = new Vector2f(x * _map.TileWidth, (y - yOffset) * _map.TileHeight);
+                                tile!.Position = new Vector2f(x * _map.TileWidth, (y - yOffset) * _map.TileHeight);
 
                                 tiles.Add(tile);
+
                             }
                         }
                     }
@@ -80,7 +104,7 @@ public class TileMapRender
                 _tiles.Add(mapLayer.Name, tiles);
         }
 
-        foreach (var c in _map.MapObjects)
+        foreach (var c in _map.MapObjects!)
         {
             foreach (var obj in c.Objects)
             {

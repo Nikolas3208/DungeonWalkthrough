@@ -45,7 +45,7 @@ public class AnimSprite : Transformable, Drawable
 
         _rect = new RectangleShape(new Vector2f(SpriteSheet!.SubWidth, SpriteSheet!.SubHeight));
         _rect.Texture = SpriteSheet?.Texture;
-        _rect.Origin = new Vector2f(SpriteSheet!.SubWidth / 2, SpriteSheet!.SubHeight / 2);
+        //_rect.Origin = new Vector2f(SpriteSheet!.SubWidth / 2, SpriteSheet!.SubHeight / 2);
     }
 
     /// <summary>

@@ -52,6 +52,7 @@ public class Animation : Transformable, Drawable
     public Animation(string name, AnimationFrame[] frames) : this(name)
     {
         _frames = frames;
+        _curentFrame = _frames[_currentFrameIndex];
     }
 
     /// <summary>
