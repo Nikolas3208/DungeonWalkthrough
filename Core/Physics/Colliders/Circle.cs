@@ -19,6 +19,12 @@ public struct Circle
         Point = new Vector2f(point.X + radius / 2, point.Y + radius / 2);
     }
 
+    public Circle(Circle circle)
+    {
+        Point = circle.Point;
+        Radius = circle.Radius;
+    }
+
     public Circle UpdatePosition(Vector2f position) => new Circle(Point + position, Radius);
 
 }

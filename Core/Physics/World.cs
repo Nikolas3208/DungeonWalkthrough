@@ -64,7 +64,7 @@ public class World
 
 
                                         rb.IsCollision = true;
-                                        if (!CollisionDetected.AABBvsAABB(rb.Collider.ColliderShape.AABB.UpdatePosition(rb.OldPosition), rb2.Collider.ColliderShape.AABB.UpdatePosition(rb2.OldPosition)))
+                                        if (!CollisionDetected.AABBvsAABB(rb.Collider.ColliderShape.AABB.UpdatePosition(rb.OldPosition), rb2.Collider.ColliderShape.AABB.UpdatePosition(rb2.Position)))
                                         {
                                             rb.Position = rb.OldPosition;
                                         }
@@ -75,8 +75,29 @@ public class World
                             {
                                 if (CollisionDetected.AABBvsCircle(rb.Collider.ColliderShape.AABB.UpdatePosition(rb.Position), rb2.Collider.ColliderShape.Circle.UpdatePosition(rb2.Position)))
                                 {
-                                    rb.Velocity = new Vector2f();
-                                    rb.Velocity -= new Vector2f(0, _gravityScale * deltaTime.AsSeconds());
+                                    if (rb.Position.Y - rb.OldPosition.Y != 0 && rb.Position.X - rb.OldPosition.X == 0)
+                                        rb.Velocity = new Vector2f(rb.Velocity.X, 0);
+                                    else if (rb.Position.X - rb.OldPosition.X != 0 && rb.Position.Y - rb.OldPosition.Y == 0)
+                                        rb.Velocity = new Vector2f(0, rb.Velocity.Y);
+                                    else if (rb.Position.X - rb.OldPosition.X != 0 && rb.Position.Y - rb.OldPosition.Y != 0)
+                                        rb.Velocity = new Vector2f(0, 0);
+
+                                    rb.IsCollision = true;
+                                    if (!CollisionDetected.AABBvsCircle(rb.Collider.ColliderShape.AABB.UpdatePosition(rb.OldPosition), rb2.Collider.ColliderShape.Circle.UpdatePosition(rb2.Position)))
+                                    {
+                                        rb.Position = rb.OldPosition;
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
+                                }
+                            }
+                            else if (rb2.Collider!.Type == ColliderType.Poligon)
+                            {
+                                if (CollisionDetected.AABBvsPoligon(rb.Collider.ColliderShape.AABB.UpdatePosition(rb.Position), rb.Collider.ColliderShape.Poligon))
+                                {
+                                    rb.Position = rb.OldPosition;
                                 }
                             }
                         }

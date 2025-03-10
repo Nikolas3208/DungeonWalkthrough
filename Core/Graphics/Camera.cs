@@ -8,6 +8,7 @@ public struct Camera
     public Vector2f Position;
 
     public float Rotation;
+    public float Zoom = 1.5f;
 
     public Camera(Vector2u size, Vector2f position)
     {

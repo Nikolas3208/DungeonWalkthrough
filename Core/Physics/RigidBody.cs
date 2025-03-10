@@ -8,7 +8,7 @@ public class RigidBody : TransformObject
 {
     public bool IsTrigger { get; set; } = false;
     public bool IsCollision { get; set; }
-    public bool IsGravity { get; set; } = true;
+    public bool IsGravity { get; set; } = false;
 
     public Vector2f Velocity { get; set; }
     public Vector2f Direction { get; set; }

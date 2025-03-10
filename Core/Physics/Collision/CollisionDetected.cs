@@ -3,7 +3,7 @@ using Core.Physics.Colliders;
 namespace Core.Physics.Collision;
 
 public static class CollisionDetected
-{    
+{
     public static bool AABBvsAABB(AABB aabb1, AABB aabb2)
     {
         if (aabb1.Min.X <= aabb2.Max.X && aabb1.Min.X >= aabb2.Min.X
@@ -54,6 +54,21 @@ public static class CollisionDetected
             && circle.Point.Y >= aabb.Min.Y && circle.Point.Y < +aabb.Max.Y)
             return true;
 
+        return false;
+    }
+
+    public static bool AABBvsPoligon(AABB aabb, Poligon poligon)
+    {
+        return false;
+    }
+
+    public static bool CircleVsPoligon(Circle circle, Poligon poligon)
+    {
+        return false;
+    }
+
+    public static bool PoligonVsPoligon(Poligon p1, Poligon p2)
+    {
         return false;
     }
 }

@@ -19,6 +19,12 @@ public struct AABB
         Max = max;
     }
 
+    public AABB(AABB aabb)
+    {
+        Min = aabb.Min;
+        Max = aabb.Max;
+    }
+
     public AABB UpdatePosition(Vector2f position) => new AABB(Min + position, Max + position);
 
 }

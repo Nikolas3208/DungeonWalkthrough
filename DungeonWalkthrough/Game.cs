@@ -53,7 +53,7 @@ public class Game : IGame
     {
         Camera = new Camera(gameWindow.GetSize(), new Vector2f());
 
-        var map = TmxLoader.Load("..\\..\\Content\\Maps\\TestLevel\\testLevel.tmx");
+        var map = TmxLoader.Load("..\\..\\Content\\Maps\\TestLevel2\\testLevel.tmx");
         tileMapRender = new TileMapRender(map, this);
         tileMapRender.CreateRenderMap();
 
@@ -62,7 +62,7 @@ public class Game : IGame
 
         Player = new Player(rb, Camera);
 
-        rb.Position = new Vector2f(1700, 350);
+        rb.Position = new Vector2f(200, 350);
     }
 
     /// <summary>

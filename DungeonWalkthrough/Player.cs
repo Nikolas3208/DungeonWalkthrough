@@ -58,6 +58,8 @@ public class Player : TransformObject, Drawable
         anim2.SetAnimSprite(animSprite2);
 
         _animator.AddAnimation("Run", anim2);
+
+        _animator.Position = new Vector2f(0, 8);
     }
 
     public void Update(Time deltaTime)

@@ -108,11 +108,30 @@ public class TileMapRender
         {
             foreach (var obj in c.Objects)
             {
-                var aabb = new AABB(new Vector2f(obj.Rect.Left, obj.Rect.Top), new Vector2f(obj.Rect.Width, obj.Rect.Height) + new Vector2f(obj.Rect.Left, obj.Rect.Top));
+                if (obj.MapObjectType == MapObjectType.AABB)
+                {
+                    var aabb = new AABB(obj.AABB);
 
-                var cillider = new Collider(ColliderType.Rectangle, new ColliderShape(aabb));
+                    var cillider = new Collider(ColliderType.Rectangle, new ColliderShape(aabb));
 
-                _rigidBodies.Add(_game.World!.CreateRigidBody(cillider));
+                    _rigidBodies.Add(_game.World!.CreateRigidBody(cillider));
+                }
+                else if (obj.MapObjectType == MapObjectType.Circle)
+                {
+                    var circle = new Circle(obj.Circle);
+
+                    var cillider = new Collider(ColliderType.Circle, new ColliderShape(circle));
+
+                    _rigidBodies.Add(_game.World!.CreateRigidBody(cillider));
+                }
+                else if (obj.MapObjectType == MapObjectType.Poligon)
+                {
+                    var poligon = new Poligon(obj.Poligon);
+
+                    var cillider = new Collider(ColliderType.Poligon, new ColliderShape(poligon));
+
+                    _rigidBodies.Add(_game.World!.CreateRigidBody(cillider));
+                }
             }
         }
     }

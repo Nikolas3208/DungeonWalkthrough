@@ -1,4 +1,6 @@
-﻿using SFML.Graphics;
+﻿using Core.Physics.Colliders;
+using SFML.Graphics;
+using SFML.System;
 using System.Xml.Linq;
 
 namespace Core.Utils.TmxLoader
@@ -22,10 +24,36 @@ namespace Core.Utils.TmxLoader
                     int id = int.Parse(o.Attribute("id")!.Value);
                     float x = float.Parse(o.Attribute("x")!.Value);
                     float y = float.Parse(o.Attribute("y")!.Value);
-                    float width = float.Parse(o.Attribute("width")!.Value);
-                    float height = float.Parse(o.Attribute("height")!.Value);
+                    if (o.Element("polygon") == null && o.Element("ellipse") == null)
+                    {
+                        float width = float.Parse(o.Attribute("width")!.Value);
+                        float height = float.Parse(o.Attribute("height")!.Value);
 
-                    objs.Add(new MapObject(id, new FloatRect(x, y, width, height)));
+                        objs.Add(new MapObject(id, new AABB(new Vector2f(x, y), new Vector2f(x, y) + new Vector2f(width, height))));
+                    }
+                    else if (o.Element("ellipse") != null)
+                    {
+                        float width = float.Parse(o.Attribute("width")!.Value);
+                        float height = float.Parse(o.Attribute("height")!.Value);
+
+                        objs.Add(new MapObject(id, new Circle(new Vector2f(x - width / 2, y - height / 2), width / 2)));
+                    }
+                    else if (o.Element("polygon") != null)
+                    {
+                        var vertices = new List<Vector2f>();
+
+                        var v = o.Element("polygon")!.Attribute("points")!.Value;
+                        var vSplit = v.Split(" ");
+                        for (int i = 0; i < vSplit.Length; i++)
+                        {
+                            var nums = vSplit[i].Split(',');
+
+                            vertices.Add(new Vector2f(float.Parse(nums[0]), float.Parse(nums[1])));
+                        }
+
+                        objs.Add(new MapObject(id, new Poligon(new Vector2f(x, y), vertices.ToArray())));
+                    }
+                    
                 }
 
                 int objGroupId = int.Parse(obj.Attribute("id")!.Value);
