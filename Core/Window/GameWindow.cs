@@ -6,6 +6,18 @@ namespace Core.Window;
 
 public class GameWindow
 {
+    public delegate void WindowUpdate(float deltaTime);
+    public event WindowUpdate Update;
+
+    public delegate void WindowDraw(WindowDrawEvent e);
+    public event WindowDraw Draw;
+
+    public delegate void WindowResize(WindowResizeEvent e);
+    public event WindowResize Resize;
+
+    public delegate void WindowClose();
+    public event WindowClose Close;
+
     /// <summary>
     /// Окно
     /// </summary>
@@ -17,11 +29,6 @@ public class GameWindow
     private WindowSettings _settings;
 
     /// <summary>
-    /// Приложение
-    /// </summary>
-    private Application _perentApp;
-
-    /// <summary>
     /// Часы/Таймер
     /// </summary>
     private Clock _clock;
@@ -31,10 +38,9 @@ public class GameWindow
     /// </summary>
     /// <param name="app"> Родительское приложение </param>
     /// <param name="settings"> Настройки окна </param>
-    public GameWindow(Application app, WindowSettings settings)
+    public GameWindow(WindowSettings settings)
     {
         _settings = settings;
-        _perentApp = app;
 
         _window = new RenderWindow(settings.VideoMode, settings.Title, settings.Styles, settings.ContextSettings);
 
@@ -56,11 +62,13 @@ public class GameWindow
         {
             _window.DispatchEvents();
 
-            _perentApp.Update(_clock.Restart());
+            if (Update != null)
+                Update(_clock.Restart().AsSeconds());
 
             _window.Clear();
 
-            _perentApp.Draw(_window, RenderStates.Default);
+            if (Draw != null)
+                Draw(new WindowDrawEvent(_window, RenderStates.Default, _clock.Restart().AsSeconds()));
 
             _window.Display();
         }
@@ -91,6 +99,15 @@ public class GameWindow
     public View GetView() => _window.GetView();
 
     /// <summary>
+    /// Получить размер окна
+    /// </summary>
+    /// <returns> Возвращает Vector2u </returns>
+    public Vector2u GetSize()
+    {
+        return _window.Size;
+    }
+
+    /// <summary>
     /// Обновить настройки окна
     /// </summary>
     /// <param name="settings"> Настройки окна </param>
@@ -108,8 +125,10 @@ public class GameWindow
     /// <param name="e"></param>
     private void Window_Resized(object? sender, SizeEventArgs e)
     {
-        _perentApp.Resize(e.Width, e.Height);
         _window.SetView(new View(new FloatRect(0, 0, e.Width, e.Height)));
+
+        if(Resize != null)
+            Resize(new WindowResizeEvent(e.Width, e.Height));
     }
 
     /// <summary>
@@ -119,12 +138,9 @@ public class GameWindow
     /// <param name="e"></param>
     private void Window_Closed(object? sender, EventArgs e)
     {
-        _perentApp.Close();
-        _window.Close();
-    }
+        if (Close != null) 
+            Close();
 
-    public Vector2u GetSize()
-    {
-        return _window.Size;
+        _window.Close();
     }
 }

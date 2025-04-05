@@ -1,8 +1,6 @@
 using System.Diagnostics.Metrics;
 using Core.Animation;
 using Core.Content;
-using Core.Physics;
-using Core.Physics.Colliders;
 using Core.Utils.TmxLoader;
 using SFML.Graphics;
 using SFML.System;
@@ -11,21 +9,18 @@ namespace Core.Graphics.TileMap;
 
 public class TileMapRender
 {
-    private Map _map;
-    private Dictionary<string, List<Tile>> _tiles;
-    private List<RigidBody> _rigidBodies;
+    protected Map _map;
+    protected Dictionary<string, List<Tile>> _tiles;
 
-    private readonly IGame _game;
-    public TileMapRender(Map map, IGame game)
+    public TileMapRender(Map map)
     {
         _map = map;
-        _game = game;
 
         _tiles = new Dictionary<string, List<Tile>>();
-        _rigidBodies = new List<RigidBody>();
+        //_rigidBodies = new List<RigidBody>();
     }
 
-    public void CreateRenderMap()
+    public virtual void CreateRenderMap(AssetManager assetManager)
     {
         if (_map == null)
             return;
@@ -59,7 +54,7 @@ public class TileMapRender
 
                             if (ts != null)
                             {
-                                var asset = _game.AssetManager!.GetAsset<SpriteAsset>(ts.Image.Name);
+                                var asset = assetManager!.GetAsset<SpriteAsset>(ts.Image.Name);
 
                                 var ss = new SpriteSheet(ts.TileWidth, ts.TileHeight, false, 0, asset!.Sprite);
                                 Tile? tile = null;
@@ -103,40 +98,9 @@ public class TileMapRender
             if (!_tiles.ContainsKey(mapLayer.Name))
                 _tiles.Add(mapLayer.Name, tiles);
         }
-
-        foreach (var c in _map.MapObjects!)
-        {
-            foreach (var obj in c.Objects)
-            {
-                if (obj.MapObjectType == MapObjectType.AABB)
-                {
-                    var aabb = new AABB(obj.AABB);
-
-                    var cillider = new Collider(ColliderType.Rectangle, new ColliderShape(aabb));
-
-                    _rigidBodies.Add(_game.World!.CreateRigidBody(cillider));
-                }
-                else if (obj.MapObjectType == MapObjectType.Circle)
-                {
-                    var circle = new Circle(obj.Circle);
-
-                    var cillider = new Collider(ColliderType.Circle, new ColliderShape(circle));
-
-                    _rigidBodies.Add(_game.World!.CreateRigidBody(cillider));
-                }
-                else if (obj.MapObjectType == MapObjectType.Poligon)
-                {
-                    var poligon = new Poligon(obj.Poligon);
-
-                    var cillider = new Collider(ColliderType.Poligon, new ColliderShape(poligon));
-
-                    _rigidBodies.Add(_game.World!.CreateRigidBody(cillider));
-                }
-            }
-        }
     }
 
-    public void Draw(RenderTarget target, RenderStates states)
+    public virtual void Draw(RenderTarget target, RenderStates states)
     {
         foreach (var tiles in _tiles)
         {

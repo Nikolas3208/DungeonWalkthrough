@@ -1,6 +1,7 @@
-﻿using Core.Physics.Colliders;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
+using System.Net.Http.Headers;
+using System.Numerics;
 using System.Xml.Linq;
 
 namespace Core.Utils.TmxLoader
@@ -29,14 +30,14 @@ namespace Core.Utils.TmxLoader
                         float width = float.Parse(o.Attribute("width")!.Value);
                         float height = float.Parse(o.Attribute("height")!.Value);
 
-                        objs.Add(new MapObject(id, new AABB(new Vector2f(x, y), new Vector2f(x, y) + new Vector2f(width, height))));
+                        objs.Add(new MapObject(id, new Vector2f(x, y), new Vector2f(width, height)));
                     }
                     else if (o.Element("ellipse") != null)
                     {
                         float width = float.Parse(o.Attribute("width")!.Value);
                         float height = float.Parse(o.Attribute("height")!.Value);
 
-                        objs.Add(new MapObject(id, new Circle(new Vector2f(x - width / 2, y - height / 2), width / 2)));
+                        objs.Add(new MapObject(id, new Vector2f(x, y), width / 2));
                     }
                     else if (o.Element("polygon") != null)
                     {
@@ -51,7 +52,7 @@ namespace Core.Utils.TmxLoader
                             vertices.Add(new Vector2f(float.Parse(nums[0]), float.Parse(nums[1])));
                         }
 
-                        objs.Add(new MapObject(id, new Poligon(new Vector2f(x, y), vertices.ToArray())));
+                        objs.Add(new MapObject(id, new Vector2f(x, y), vertices));
                     }
                     
                 }

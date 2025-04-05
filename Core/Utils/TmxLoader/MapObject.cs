@@ -1,8 +1,9 @@
-﻿using Core.Physics.Colliders;
-using SFML.Graphics;
+﻿using SFML.Graphics;
+using SFML.System;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,37 +11,43 @@ namespace Core.Utils.TmxLoader
 {
     public enum MapObjectType
     {
-        AABB,
         Circle,
         Poligon
     }
     public class MapObject
     {
         public int Id { get; set; }
-        public AABB AABB { get; set; }
-        public Circle Circle { get; set; }
-        public Poligon Poligon { get; set; }
+
+        public Vector2f Position { get; set; }
+        public Vector2f Size { get; set; }
+
+        public float Radius { get; set; }
+
+        public List<Vector2f> Points { get; set; }
 
         public MapObjectType MapObjectType { get; set; }
 
-        public MapObject(int id, AABB aabb)
+        public MapObject(int id, Vector2f position, Vector2f size)
         {
             Id = id;
-            AABB = aabb;
-            MapObjectType = MapObjectType.AABB;
+            Position = position;
+            Size = size;
+            MapObjectType = MapObjectType.Poligon;
         }
 
-        public MapObject(int id, Circle circle)
+        public MapObject(int id, Vector2f position, float radius)
         {
             Id = id;
-            Circle = circle;
+            Position = position;
+            Radius = radius;
             MapObjectType = MapObjectType.Circle;
         }
 
-        public MapObject(int id, Poligon poligon)
+        public MapObject(int id, Vector2f position, List<Vector2f> points)
         {
             Id = id;
-            Poligon = poligon;
+            Position = position;
+            Points = points;
             MapObjectType = MapObjectType.Poligon;
         }
     }

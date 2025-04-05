@@ -35,6 +35,11 @@ public class AnimSprite : Transformable, Drawable
         set => _rect.FillColor = value;
     }
 
+    public Vector2f Size
+    {
+        get => _rect.Size;
+    }
+
     /// <summary>
     /// Конструтктор аниамии
     /// </summary>

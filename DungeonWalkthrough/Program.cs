@@ -8,12 +8,13 @@ public class Program
 {
     public static void Main()
     {
-        var game = new Game();
-
         var settings = new WindowSettings(VideoMode.DesktopMode, "Dungeon Walkthrough");
+        settings.VSync = false;
+        settings.FramerateLimit = 60;
 
-        var app = new Application(settings, game);
+        var window = new GameWindow(settings);
 
-        app.Run();
+        var game = new Game1(window);
+        game.Run();
     }
 }

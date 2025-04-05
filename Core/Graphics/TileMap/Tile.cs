@@ -1,10 +1,9 @@
 using Core.Animation;
-using Core.Physics.Transformation;
 using SFML.Graphics;
 
 namespace Core.Graphics.TileMap;
 
-public class Tile : TransformObject, Drawable
+public class Tile : Transformable, Drawable
 {
     private Sprite? _sprite;
     private Animator? _animator;

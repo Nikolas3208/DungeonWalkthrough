@@ -60,6 +60,11 @@ public class Animator : Transformable, Drawable
         return _animations[name];
     }
 
+    public Animation? GetAnimation()
+    {
+        return _currentAnimation;
+    }
+
     /// <summary>
     /// Играть анимаию
     /// </summary>
