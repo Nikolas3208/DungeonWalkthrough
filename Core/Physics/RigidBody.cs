@@ -6,7 +6,7 @@ using SFML.System;
 namespace Core.Physics;
 
 /// <summary>
-/// Форма тела. Кргуг, многоугольник
+/// Р¤РѕСЂРјР° С‚РµР»Р°. РљСЂРіСѓРі, РјРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРє
 /// </summary>
 public enum BodyType
 {
@@ -28,32 +28,32 @@ public class RigidBody
     private float _cos;
 
     /// <summary>
-    /// Форма тела круг
+    /// Р¤РѕСЂРјР° С‚РµР»Р° РєСЂСѓРі
     /// </summary>
     private Circle _circle;
 
     /// <summary>
-    /// Форма тела многоугольник
+    /// Р¤РѕСЂРјР° С‚РµР»Р° РјРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРє
     /// </summary>
     private Polygon _polygon;
 
     /// <summary>
-    /// Ограничивающая рамка, выровненная по оси
+    /// РћРіСЂР°РЅРёС‡РёРІР°СЋС‰Р°СЏ СЂР°РјРєР°, РІС‹СЂРѕРІРЅРµРЅРЅР°СЏ РїРѕ РѕСЃРё
     /// </summary>
     private AABB _aabb;
 
     /// <summary>
-    /// Сушьность 
+    /// РЎСѓС€СЊРЅРѕСЃС‚СЊ 
     /// </summary>
     public Entity Entity { get; set; }
 
     /// <summary>
-    /// Уникальный ключ тела
+    /// РЈРЅРёРєР°Р»СЊРЅС‹Р№ РєР»СЋС‡ С‚РµР»Р°
     /// </summary>
     public Guid Id { get; }
 
     /// <summary>
-    /// Позиция тела
+    /// РџРѕР·РёС†РёСЏ С‚РµР»Р°
     /// </summary>
     public Vector2f Position
     {
@@ -67,12 +67,12 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Линейная скорость тела
+    /// Р›РёРЅРµР№РЅР°СЏ СЃРєРѕСЂРѕСЃС‚СЊ С‚РµР»Р°
     /// </summary>
     public Vector2f LinearVelocity { get; set; }
 
     /// <summary>
-    /// Угол врашения тела в грудусах
+    /// РЈРіРѕР» РІСЂР°С€РµРЅРёСЏ С‚РµР»Р° РІ РіСЂСѓРґСѓСЃР°С…
     /// </summary>
     public float Rotation 
     {
@@ -89,12 +89,12 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Возврашает угол рашения тела в радианах
+    /// Р’РѕР·РІСЂР°С€Р°РµС‚ СѓРіРѕР» СЂР°С€РµРЅРёСЏ С‚РµР»Р° РІ СЂР°РґРёР°РЅР°С…
     /// </summary>
     public float DigrisRotation { get => _digrisRotation; }
 
     /// <summary>
-    /// Скорость врашения тела
+    /// РЎРєРѕСЂРѕСЃС‚СЊ РІСЂР°С€РµРЅРёСЏ С‚РµР»Р°
     /// </summary>
     public float AngularVelocity 
     {
@@ -107,41 +107,41 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Тип тела (Его форма)
+    /// РўРёРї С‚РµР»Р° (Р•РіРѕ С„РѕСЂРјР°)
     /// </summary>
     public BodyType Type { get; }
 
     /// <summary>
-    /// Информация про массу и инерцию тела
+    /// РРЅС„РѕСЂРјР°С†РёСЏ РїСЂРѕ РјР°СЃСЃСѓ Рё РёРЅРµСЂС†РёСЋ С‚РµР»Р°
     /// </summary>
     public MassData MassData { get; set; }
 
     /// <summary>
-    /// Материал тела. Его плотность упругость и сила трения
+    /// РњР°С‚РµСЂРёР°Р» С‚РµР»Р°. Р•РіРѕ РїР»РѕС‚РЅРѕСЃС‚СЊ СѓРїСЂСѓРіРѕСЃС‚СЊ Рё СЃРёР»Р° С‚СЂРµРЅРёСЏ
     /// </summary>
     public Material Material { get; set; }
 
     /// <summary>
-    /// Тела являеться неподижным
+    /// РўРµР»Р° СЏРІР»СЏРµС‚СЊСЃСЏ РЅРµРїРѕРґРёР¶РЅС‹Рј
     /// </summary>
     public readonly bool IsStatic = false;
 
     /// <summary>
-    /// На тело влияет сила граитации
+    /// РќР° С‚РµР»Рѕ РІР»РёСЏРµС‚ СЃРёР»Р° РіСЂР°РёС‚Р°С†РёРё
     /// </summary>
     public bool IsGravity = true;
 
     /// <summary>
-    /// Тело не может вращаться
+    /// РўРµР»Рѕ РЅРµ РјРѕР¶РµС‚ РІСЂР°С‰Р°С‚СЊСЃСЏ
     /// </summary>
     public bool FreezeRotation = false;
 
     /// <summary>
-    /// Твердое тело
+    /// РўРІРµСЂРґРѕРµ С‚РµР»Рѕ
     /// </summary>
-    /// <param name="polygon"> Многоугольник (форма тела) </param>
-    /// <param name="material"> Материал тела </param>
-    /// <param name="isStatic"> Тело неподвижное? </param>
+    /// <param name="polygon"> РњРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРє (С„РѕСЂРјР° С‚РµР»Р°) </param>
+    /// <param name="material"> РњР°С‚РµСЂРёР°Р» С‚РµР»Р° </param>
+    /// <param name="isStatic"> РўРµР»Рѕ РЅРµРїРѕРґРІРёР¶РЅРѕРµ? </param>
     public RigidBody(Polygon polygon, Material material, bool isStatic = false)
     {
         _polygon = polygon;
@@ -163,11 +163,11 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Твердое тело
+    /// РўРІРµСЂРґРѕРµ С‚РµР»Рѕ
     /// </summary>
-    /// <param name="circle"> Круг (форма тела) </param>
-    /// <param name="material"> Материал тела </param>
-    /// <param name="isStatic"> Тело неподвижное? </param>
+    /// <param name="circle"> РљСЂСѓРі (С„РѕСЂРјР° С‚РµР»Р°) </param>
+    /// <param name="material"> РњР°С‚РµСЂРёР°Р» С‚РµР»Р° </param>
+    /// <param name="isStatic"> РўРµР»Рѕ РЅРµРїРѕРґРІРёР¶РЅРѕРµ? </param>
     public RigidBody(Circle circle, Material material, bool isStatic)
     {
         _circle = circle;
@@ -185,11 +185,11 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Шаг тела
+    /// РЁР°Рі С‚РµР»Р°
     /// </summary>
-    /// <param name="deltaTime"> Время кадра </param>
-    /// <param name="gravity"> Сила гравитации </param>
-    /// <param name="iterations"> Количество итераций физики на кадр </param>
+    /// <param name="deltaTime"> Р’СЂРµРјСЏ РєР°РґСЂР° </param>
+    /// <param name="gravity"> РЎРёР»Р° РіСЂР°РІРёС‚Р°С†РёРё </param>
+    /// <param name="iterations"> РљРѕР»РёС‡РµСЃС‚РІРѕ РёС‚РµСЂР°С†РёР№ С„РёР·РёРєРё РЅР° РєР°РґСЂ </param>
     public void Step(float deltaTime, Vector2f gravity, int iterations)
     {
         if (IsStatic)
@@ -209,10 +209,10 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Вызываеться в момент обнаружения столкновения
+    /// Р’С‹Р·С‹РІР°РµС‚СЊСЃСЏ РІ РјРѕРјРµРЅС‚ РѕР±РЅР°СЂСѓР¶РµРЅРёСЏ СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ
     /// </summary>
-    /// <param name="normal"> Направление разделения </param>
-    /// <param name="depth"> Глубина </param>
+    /// <param name="normal"> РќР°РїСЂР°РІР»РµРЅРёРµ СЂР°Р·РґРµР»РµРЅРёСЏ </param>
+    /// <param name="depth"> Р“Р»СѓР±РёРЅР° </param>
     public void OnCollision(Vector2f normal, float depth)
     {
         if (OnCollisionDetected != null)
@@ -220,9 +220,9 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Переместить тело на
+    /// РџРµСЂРµРјРµСЃС‚РёС‚СЊ С‚РµР»Рѕ РЅР°
     /// </summary>
-    /// <param name="offset"> Вектор на который переносим тело </param>
+    /// <param name="offset"> Р’РµРєС‚РѕСЂ РЅР° РєРѕС‚РѕСЂС‹Р№ РїРµСЂРµРЅРѕСЃРёРј С‚РµР»Рѕ </param>
     public void Move(Vector2f offset)
     {
         if (IsStatic) return;
@@ -231,9 +231,9 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Переместить тело в
+    /// РџРµСЂРµРјРµСЃС‚РёС‚СЊ С‚РµР»Рѕ РІ
     /// </summary>
-    /// <param name="v"> Новая позиция тела </param>
+    /// <param name="v"> РќРѕРІР°СЏ РїРѕР·РёС†РёСЏ С‚РµР»Р° </param>
     public void MoveTo(Vector2f v)
     {
         if (IsStatic) return;
@@ -242,9 +242,9 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Повернуть тело на
+    /// РџРѕРІРµСЂРЅСѓС‚СЊ С‚РµР»Рѕ РЅР°
     /// </summary>
-    /// <param name="v"> Угол на который поворачиаем тело в градусах </param>
+    /// <param name="v"> РЈРіРѕР» РЅР° РєРѕС‚РѕСЂС‹Р№ РїРѕРІРѕСЂР°С‡РёР°РµРј С‚РµР»Рѕ РІ РіСЂР°РґСѓСЃР°С… </param>
     public void Rotate(float v)
     {
         if(IsStatic) return;
@@ -254,9 +254,9 @@ public class RigidBody
 
 
     /// <summary>
-    /// Повернуть тело в
+    /// РџРѕРІРµСЂРЅСѓС‚СЊ С‚РµР»Рѕ РІ
     /// </summary>
-    /// <param name="v"> Угол поворота в градусах </param>
+    /// <param name="v"> РЈРіРѕР» РїРѕРІРѕСЂРѕС‚Р° РІ РіСЂР°РґСѓСЃР°С… </param>
     public void RotateTo(float v)
     {
         if(IsStatic) return;
@@ -265,9 +265,9 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Добавить усилие к телу
+    /// Р”РѕР±Р°РІРёС‚СЊ СѓСЃРёР»РёРµ Рє С‚РµР»Сѓ
     /// </summary>
-    /// <param name="force"> Вектор силы и направления скорости </param>
+    /// <param name="force"> Р’РµРєС‚РѕСЂ СЃРёР»С‹ Рё РЅР°РїСЂР°РІР»РµРЅРёСЏ СЃРєРѕСЂРѕСЃС‚Рё </param>
     public void AddForce(Vector2f force)
     {
         if(!IsStatic)
@@ -275,9 +275,9 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Добавить скорость к телу
+    /// Р”РѕР±Р°РІРёС‚СЊ СЃРєРѕСЂРѕСЃС‚СЊ Рє С‚РµР»Сѓ
     /// </summary>
-    /// <param name="v"> Вектор силы и направления скорости </param>
+    /// <param name="v"> Р’РµРєС‚РѕСЂ СЃРёР»С‹ Рё РЅР°РїСЂР°РІР»РµРЅРёСЏ СЃРєРѕСЂРѕСЃС‚Рё </param>
     public void AddLinearVelosity(Vector2f v)
     {
         if(!IsStatic)
@@ -285,9 +285,9 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Добаить скорость ращения телу
+    /// Р”РѕР±Р°РёС‚СЊ СЃРєРѕСЂРѕСЃС‚СЊ СЂР°С‰РµРЅРёСЏ С‚РµР»Сѓ
     /// </summary>
-    /// <param name="v"> Скорость и угол врашения тела </param>
+    /// <param name="v"> РЎРєРѕСЂРѕСЃС‚СЊ Рё СѓРіРѕР» РІСЂР°С€РµРЅРёСЏ С‚РµР»Р° </param>
     public void AddAngularVelosity(float v)
     {
         if (IsStatic) return;
@@ -297,7 +297,7 @@ public class RigidBody
 
 
     /// <summary>
-    /// Получить Ограничивающую рамку, выровненную по оси
+    /// РџРѕР»СѓС‡РёС‚СЊ РћРіСЂР°РЅРёС‡РёРІР°СЋС‰СѓСЋ СЂР°РјРєСѓ, РІС‹СЂРѕРІРЅРµРЅРЅСѓСЋ РїРѕ РѕСЃРё
     /// </summary>
     /// <returns> AABB </returns>
     public AABB GetAABB()
@@ -306,7 +306,7 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Получить форму тела круг
+    /// РџРѕР»СѓС‡РёС‚СЊ С„РѕСЂРјСѓ С‚РµР»Р° РєСЂСѓРі
     /// </summary>
     /// <returns> Circle </returns>
     public Circle GetCircle()
@@ -315,7 +315,7 @@ public class RigidBody
     }
 
     /// <summary>
-    /// Получить форму тела многоугольник
+    /// РџРѕР»СѓС‡РёС‚СЊ С„РѕСЂРјСѓ С‚РµР»Р° РјРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРє
     /// </summary>
     /// <returns> Polygon </returns>
     public Polygon GetPolygon()

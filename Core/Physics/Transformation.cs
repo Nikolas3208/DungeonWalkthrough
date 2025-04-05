@@ -14,32 +14,32 @@ public class Transformation
     private float _rotation = 0f;
 
     /// <summary>
-    /// Трансформаия обекта
+    /// РўСЂР°РЅСЃС„РѕСЂРјР°РёСЏ
     /// </summary>
     public Transform Transform { get => _transform; }
 
     /// <summary>
-    /// Старая позиция
+    /// РџСЂРµРґС‹РґСѓС‰Р°СЏ РїРѕР·РёС†РёСЏ
     /// </summary>
     public Vector2f OldPosition { get => _oldPosition; }
 
     /// <summary>
-    /// Позиция
+    /// РџРѕР·РёС†РёСЏ
     /// </summary>
     public Vector2f Position { get => _position; set { _oldPosition = _position; _position = value; UpdateTransform(); } }
 
     /// <summary>
-    /// Маштаб
+    /// РњР°С€С‚Р°Р±
     /// </summary>
     public Vector2f Scale { get => _scale; set { _scale = value; UpdateTransform(); } }
 
     /// <summary>
-    /// Центр 
+    /// Р¦РµРЅС‚РµСЂ
     /// </summary>
     public Vector2f Origin { get => _origin; set { _origin = value; UpdateTransform(); } }
 
     /// <summary>
-    /// Врашение в градусах
+    /// Р’СЂР°С‰РµРЅРёРµ РІ РіСЂР°РґСѓСЃР°С…
     /// </summary>
     public float Rotation { get => _rotation; set { _rotation = value; UpdateTransform(); } }
 
@@ -49,7 +49,7 @@ public class Transformation
     }
 
     /// <summary>
-    /// Обновить трансформацию
+    /// РћР±РЅРѕРІР»РµРЅРёРµ С‚СЂР°РЅСЃС„РѕСЂРјР°С†РёРё
     /// </summary>
     public void UpdateTransform()
     {
@@ -69,9 +69,9 @@ public class Transformation
     }
 
     /// <summary>
-    /// Скопировать трансформацию
+    /// РљРѕРїРёСЂРѕРІР°С‚СЊ С‚СЂР°РЅСЃС„РѕСЂРјР°С†РёСЋ
     /// </summary>
-    /// <param name="transformation"> Трансформация другого тела </param>
+    /// <param name="transformation"> РўСЂР°РЅСЃС„РѕСЂРјР°С†РёСЏ </param>
     public void UpdateTransform(Transformation transformation)
     {
         _oldPosition = transformation.OldPosition;

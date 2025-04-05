@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|c:\\users\\pc\\source\\repos\\dungeonwalkthrough\\core\\physics\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|solutionrelative:core\\physics\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|c:\\users\\pc\\source\\repos\\dungeonwalkthrough\\core\\physics\\collision\\manifold.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|solutionrelative:core\\physics\\collision\\manifold.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|c:\\users\\pc\\source\\repos\\dungeonwalkthrough\\core\\physics\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|solutionrelative:core\\physics\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|c:\\users\\pc\\source\\repos\\dungeonwalkthrough\\core\\physics\\transformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|solutionrelative:core\\physics\\transformation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|c:\\users\\pc\\source\\repos\\dungeonwalkthrough\\core\\physics\\rigidbody.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|solutionrelative:core\\physics\\rigidbody.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|c:\\users\\pc\\source\\repos\\dungeonwalkthrough\\core\\physics\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBEF293D-A474-4E84-98C9-10D563B99042}|Core\\Core.csproj|solutionrelative:core\\physics\\entity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECCE03EF-7D48-4603-9AF0-A900563415BB}|DungeonWalkthrough\\DungeonWalkthrough.csproj|c:\\users\\pc\\source\\repos\\dungeonwalkthrough\\dungeonwalkthrough\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,11 +54,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 210,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Game1.cs",
               "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\DungeonWalkthrough\\Game1.cs",
               "RelativeDocumentMoniker": "DungeonWalkthrough\\Game1.cs",
@@ -59,12 +67,11 @@
               "ViewState": "AgIAABIAAAAAAAAAAAAtwCYAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T08:27:11.217Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\DungeonWalkthrough\\Player.cs",
               "RelativeDocumentMoniker": "DungeonWalkthrough\\Player.cs",
@@ -73,21 +80,45 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T09:53:54.578Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Manifold.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Physics\\Collision\\Manifold.cs",
+              "RelativeDocumentMoniker": "Core\\Physics\\Collision\\Manifold.cs",
+              "ToolTip": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Physics\\Collision\\Manifold.cs",
+              "RelativeToolTip": "Core\\Physics\\Collision\\Manifold.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T20:46:58.601Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Transformation.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Physics\\Transformation.cs",
+              "RelativeDocumentMoniker": "Core\\Physics\\Transformation.cs",
+              "ToolTip": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Physics\\Transformation.cs",
+              "RelativeToolTip": "Core\\Physics\\Transformation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T20:43:42.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "RigidBody.cs",
               "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Physics\\RigidBody.cs",
               "RelativeDocumentMoniker": "Core\\Physics\\RigidBody.cs",
               "ToolTip": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Physics\\RigidBody.cs",
               "RelativeToolTip": "Core\\Physics\\RigidBody.cs",
-              "ViewState": "AgIAAMcAAAAAAAAAAAAqwKMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T18:48:33.278Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T18:48:33.278Z"
             },
             {
               "$type": "Document",
@@ -97,27 +128,26 @@
               "RelativeDocumentMoniker": "Core\\Physics\\World.cs",
               "ToolTip": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Physics\\World.cs",
               "RelativeToolTip": "Core\\Physics\\World.cs",
-              "ViewState": "AgIAAL0AAAAAAAAAAAAgwOEAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T18:48:04.715Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Entity.cs",
               "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Physics\\Entity.cs",
               "RelativeDocumentMoniker": "Core\\Physics\\Entity.cs",
               "ToolTip": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Physics\\Entity.cs",
               "RelativeToolTip": "Core\\Physics\\Entity.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwDEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T18:45:48.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T18:45:48.381Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "TileMapRender.cs",
               "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\DungeonWalkthrough\\TileMapRender.cs",
               "RelativeDocumentMoniker": "DungeonWalkthrough\\TileMapRender.cs",
@@ -125,12 +155,11 @@
               "RelativeToolTip": "DungeonWalkthrough\\TileMapRender.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAzwB4AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T18:31:02.033Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T18:31:02.033Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Game.cs",
               "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Game.cs",
               "RelativeDocumentMoniker": "Core\\Game.cs",
@@ -138,12 +167,11 @@
               "RelativeToolTip": "Core\\Game.cs",
               "ViewState": "AgIAAE8AAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T18:28:43.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T18:28:43.717Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "GameWindow.cs",
               "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Window\\GameWindow.cs",
               "RelativeDocumentMoniker": "Core\\Window\\GameWindow.cs",
@@ -151,12 +179,11 @@
               "RelativeToolTip": "Core\\Window\\GameWindow.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAI0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T13:17:51.412Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T13:17:51.412Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "WindowEvents.cs",
               "DocumentMoniker": "C:\\Users\\pc\\source\\repos\\DungeonWalkthrough\\Core\\Window\\WindowEvents.cs",
               "RelativeDocumentMoniker": "Core\\Window\\WindowEvents.cs",
@@ -164,8 +191,7 @@
               "RelativeToolTip": "Core\\Window\\WindowEvents.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAzwCUAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T13:16:50.044Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T13:16:50.044Z"
             }
           ]
         }

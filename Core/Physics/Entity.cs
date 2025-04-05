@@ -8,13 +8,13 @@ namespace Core.Physics;
 public class Entity : Transformation, Drawable
 {
     /// <summary>
-    /// Твердое тело
+    /// РўРІРµСЂРґРѕРµ С‚РµР»Рѕ
     /// </summary>
     public RigidBody Body { get; set; }
 
     /*
     /// <summary>
-    /// Позиия сущности. Если тело не null его позицию обновляем
+    /// РџРѕР·РёРёСЏ СЃСѓС‰РЅРѕСЃС‚Рё. Р•СЃР»Рё С‚РµР»Рѕ РЅРµ null РµРіРѕ РїРѕР·РёС†РёСЋ РѕР±РЅРѕРІР»СЏРµРј
     /// </summary>
     public new Vector2f Position 
     {
@@ -31,7 +31,7 @@ public class Entity : Transformation, Drawable
     }
 
     /// <summary>
-    /// Вращение сущности. Если тело не null его вращение обновляем
+    /// Р’СЂР°С‰РµРЅРёРµ СЃСѓС‰РЅРѕСЃС‚Рё. Р•СЃР»Рё С‚РµР»Рѕ РЅРµ null РµРіРѕ РІСЂР°С‰РµРЅРёРµ РѕР±РЅРѕРІР»СЏРµРј
     /// </summary>
     public new float Rotation 
     {
@@ -49,9 +49,9 @@ public class Entity : Transformation, Drawable
     */
 
     /// <summary>
-    /// Сущность
+    /// РЎСѓС‰РЅРѕСЃС‚СЊ
     /// </summary>
-    /// <param name="body"> Тело </param>
+    /// <param name="body"> РўРµР»Рѕ </param>
     public Entity(RigidBody body)
     {
         body.Entity = this;
@@ -62,9 +62,9 @@ public class Entity : Transformation, Drawable
 
 
     /// <summary>
-    /// Обновление сущности
+    /// РћР±РЅРѕРІР»РµРЅРёРµ СЃСѓС‰РЅРѕСЃС‚Рё
     /// </summary>
-    /// <param name="deltaTime"> время кадра </param>
+    /// <param name="deltaTime"> РІСЂРµРјСЏ РєР°РґСЂР° </param>
     public virtual void Update(float deltaTime)
     {
         
@@ -76,7 +76,7 @@ public class Entity : Transformation, Drawable
     }
 
     /// <summary>
-    /// Рисовать сущность
+    /// Р РёСЃРѕРІР°С‚СЊ СЃСѓС‰РЅРѕСЃС‚СЊ
     /// </summary>
     /// <param name="target"></param>
     /// <param name="states"></param>

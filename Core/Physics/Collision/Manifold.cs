@@ -6,50 +6,50 @@ namespace Core.Physics.Collision;
 public readonly struct Manifold
 {
     /// <summary>
-    /// Тело А
+    /// РўРµР»Рѕ Рђ
     /// </summary>
     public readonly RigidBody BodyA;
 
     /// <summary>
-    /// Тело В
+    /// РўРµР»Рѕ Р’
     /// </summary>
     public readonly RigidBody BodyB;
 
     /// <summary>
-    /// Вектор разделения столкновенияы
+    /// Р’РµРєС‚РѕСЂ СЂР°Р·РґРµР»РµРЅРёСЏ СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏС‹
     /// </summary>
     public readonly Vector2f Normal;
 
     /// <summary>
-    /// Глубина столкновения
+    /// Р“Р»СѓР±РёРЅР° СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ
     /// </summary>
     public readonly float Depth;
 
     /// <summary>
-    /// Первый контакт
+    /// РџРµСЂРІС‹Р№ РєРѕРЅС‚Р°РєС‚
     /// </summary>
     public readonly Vector2f Contact1;
 
     /// <summary>
-    /// Второй контакт
+    /// Р’С‚РѕСЂРѕР№ РєРѕРЅС‚Р°РєС‚
     /// </summary>
     public readonly Vector2f Contact2;
 
     /// <summary>
-    /// Количиство контактов
+    /// РљРѕР»РёС‡РёСЃС‚РІРѕ РєРѕРЅС‚Р°РєС‚РѕРІ
     /// </summary>
     public readonly int ContactCount;
 
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="bodyA"> Тело А </param>
-    /// <param name="bodyB"> Тело В </param>
-    /// <param name="normal"> Вектор разделения столкновенияы </param>
-    /// <param name="depth"> Глубина столкновения </param>
-    /// <param name="contact1"> Первый контакт </param>
-    /// <param name="contact2"> Второй контакт </param>
-    /// <param name="contactCount"> Количиство контактов </param>
+    /// <param name="bodyA"> РўРµР»Рѕ Рђ </param>
+    /// <param name="bodyB"> РўРµР»Рѕ Р’ </param>
+    /// <param name="normal"> Р’РµРєС‚РѕСЂ СЂР°Р·РґРµР»РµРЅРёСЏ СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏС‹ </param>
+    /// <param name="depth"> Р“Р»СѓР±РёРЅР° СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ </param>
+    /// <param name="contact1"> РџРµСЂРІС‹Р№ РєРѕРЅС‚Р°РєС‚ </param>
+    /// <param name="contact2"> Р’С‚РѕСЂРѕР№ РєРѕРЅС‚Р°РєС‚ </param>
+    /// <param name="contactCount"> РљРѕР»РёС‡РёСЃС‚РІРѕ РєРѕРЅС‚Р°РєС‚РѕРІ </param>
     public Manifold(RigidBody bodyA, RigidBody bodyB, Vector2f normal, float depth, Vector2f contact1, Vector2f contact2, int contactCount)
     {
         BodyA = bodyA;

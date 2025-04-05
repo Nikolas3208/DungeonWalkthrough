@@ -10,22 +10,22 @@ namespace Core.Physics;
 public class World
 {
     /// <summary>
-    /// Минимальная плотность тела в мире
+    /// РњРёРЅРёРјР°Р»СЊРЅР°СЏ РїР»РѕС‚РЅРѕСЃС‚СЊ С‚РµР»Р° РІ РјРёСЂРµ
     /// </summary>
     public static float MinDensity = 0.1f;
 
     /// <summary>
-    /// Максимальная плотность тела в мире
+    /// РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РїР»РѕС‚РЅРѕСЃС‚СЊ С‚РµР»Р° РІ РјРёСЂРµ
     /// </summary>
     public static float MaxDensity = 22.0f;
 
     /// <summary>
-    /// Минимальное количество итераций физики на кадр
+    /// РњРёРЅРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РёС‚РµСЂР°С†РёР№ С„РёР·РёРєРё РЅР° РєР°РґСЂ
     /// </summary>
     public static int MinIterations = 1;
 
     /// <summary>
-    /// Максимальное количество итераций физики на кадр
+    /// РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РёС‚РµСЂР°С†РёР№ С„РёР·РёРєРё РЅР° РєР°РґСЂ
     /// </summary>
     public static int MaxIterations = 128;
 
@@ -48,11 +48,11 @@ public class World
     }
 
     /// <summary>
-    /// Создать тело
+    /// РЎРѕР·РґР°С‚СЊ С‚РµР»Рѕ
     /// </summary>
-    /// <param name="polygon"> Многоугольник (форма тела) </param>
-    /// <param name="material"> Материал тела </param>
-    /// <param name="isStatic"> Тело неподвижное? </param>
+    /// <param name="polygon"> РњРЅРѕРіРѕСѓРіРѕР»СЊРЅРёРє (С„РѕСЂРјР° С‚РµР»Р°) </param>
+    /// <param name="material"> РњР°С‚РµСЂРёР°Р» С‚РµР»Р° </param>
+    /// <param name="isStatic"> РўРµР»Рѕ РЅРµРїРѕРґРІРёР¶РЅРѕРµ? </param>
     /// <returns> RigidBody </returns>
     public RigidBody CreateBody(Polygon polygon, Material material, bool isStatic = false)
     {
@@ -63,11 +63,11 @@ public class World
     }
 
     /// <summary>
-    /// Создать тело
+    /// РЎРѕР·РґР°С‚СЊ С‚РµР»Рѕ
     /// </summary>
-    /// <param name="circle"> Кргу (форма тела) </param>
-    /// <param name="material"> Материал тела </param>
-    /// <param name="isStatic"> Тело неподвижное? </param>
+    /// <param name="circle"> РљСЂРіСѓ (С„РѕСЂРјР° С‚РµР»Р°) </param>
+    /// <param name="material"> РњР°С‚РµСЂРёР°Р» С‚РµР»Р° </param>
+    /// <param name="isStatic"> РўРµР»Рѕ РЅРµРїРѕРґРІРёР¶РЅРѕРµ? </param>
     /// <returns> RigidBody </returns>
     public RigidBody CreateBody(Circle circle, Material material, bool isStatic = false)
     {
@@ -78,11 +78,11 @@ public class World
     }
 
     /// <summary>
-    /// Добавить тело к физическому миру
+    /// Р”РѕР±Р°РІРёС‚СЊ С‚РµР»Рѕ Рє С„РёР·РёС‡РµСЃРєРѕРјСѓ РјРёСЂСѓ
     /// </summary>
-    /// <param name="body"> Тело </param>
-    /// <returns> True если тело добавленно в колекцию </returns>
-    /// <exception cref="ArgumentNullException"> Если тело null выкинуть исключеник </exception>
+    /// <param name="body"> РўРµР»Рѕ </param>
+    /// <returns> True РµСЃР»Рё С‚РµР»Рѕ РґРѕР±Р°РІР»РµРЅРЅРѕ РІ РєРѕР»РµРєС†РёСЋ </returns>
+    /// <exception cref="ArgumentNullException"> Р•СЃР»Рё С‚РµР»Рѕ null РІС‹РєРёРЅСѓС‚СЊ РёСЃРєР»СЋС‡РµРЅРёРє </exception>
     public bool AddBody(RigidBody body)
     {
         if (body == null) throw new ArgumentNullException("Body is null.");
@@ -97,26 +97,26 @@ public class World
     }
 
     /// <summary>
-    /// Получить тело 
+    /// РџРѕР»СѓС‡РёС‚СЊ С‚РµР»Рѕ 
     /// </summary>
-    /// <param name="id"> Идентефикатор тела </param>
-    /// <returns> RigidBody может быть null </returns>
+    /// <param name="id"> РРґРµРЅС‚РµС„РёРєР°С‚РѕСЂ С‚РµР»Р° </param>
+    /// <returns> RigidBody РјРѕР¶РµС‚ Р±С‹С‚СЊ null </returns>
     public RigidBody? GetRigidBody(Guid id)
     {
         return _bodies.FirstOrDefault(b => b.Id == id);
     }
 
     /// <summary>
-    /// Получить все тела
+    /// РџРѕР»СѓС‡РёС‚СЊ РІСЃРµ С‚РµР»Р°
     /// </summary>
     /// <returns> List<RigidBody> </returns>
     public List<RigidBody> GetBodies() => _bodies;
 
     /// <summary>
-    /// Шаг мира
+    /// РЁР°Рі РјРёСЂР°
     /// </summary>
-    /// <param name="time"> Время кадра </param>
-    /// <param name="iterations"> Количиство итераций </param>
+    /// <param name="time"> Р’СЂРµРјСЏ РєР°РґСЂР° </param>
+    /// <param name="iterations"> РљРѕР»РёС‡РёСЃС‚РІРѕ РёС‚РµСЂР°С†РёР№ </param>
     public void Step(float time, int iterations)
     {
         iterations = (int)MathHelper.Clamp(iterations, World.MinIterations, World.MaxIterations);
@@ -131,7 +131,7 @@ public class World
     }
 
     /// <summary>
-    /// Широкая фаза. Находим точки соприкосновений 
+    /// РЁРёСЂРѕРєР°СЏ С„Р°Р·Р°. РќР°С…РѕРґРёРј С‚РѕС‡РєРё СЃРѕРїСЂРёРєРѕСЃРЅРѕРІРµРЅРёР№ 
     /// </summary>
     private void BroadPhase()
     {
@@ -157,7 +157,7 @@ public class World
     }
 
     /// <summary>
-    /// Узкая фаза. Прошитываем колизию
+    /// РЈР·РєР°СЏ С„Р°Р·Р°. РџСЂРѕС€РёС‚С‹РІР°РµРј РєРѕР»РёР·РёСЋ
     /// </summary>
     private void NarrowPhase()
     {
@@ -183,10 +183,10 @@ public class World
     }
 
     /// <summary> 
-    /// Шаг тел
+    /// РЁР°Рі С‚РµР»
     /// </summary>
-    /// <param name="time"> Время кадра </param>
-    /// <param name="iterations"> Количесто итераций </param>
+    /// <param name="time"> Р’СЂРµРјСЏ РєР°РґСЂР° </param>
+    /// <param name="iterations"> РљРѕР»РёС‡РµСЃС‚Рѕ РёС‚РµСЂР°С†РёР№ </param>
     private void BodiesStep(float time, int iterations)
     {
         for (int i = 0; i < _bodies.Count; i++)
@@ -199,11 +199,11 @@ public class World
     }
 
     /// <summary>
-    /// Разделить тела
+    /// Р Р°Р·РґРµР»РёС‚СЊ С‚РµР»Р°
     /// </summary>
-    /// <param name="bodyA"> Тело А </param>
-    /// <param name="bodyB"> Тело В </param>
-    /// <param name="mtv"> Вектор задреления тела </param>
+    /// <param name="bodyA"> РўРµР»Рѕ Рђ </param>
+    /// <param name="bodyB"> РўРµР»Рѕ Р’ </param>
+    /// <param name="mtv"> Р’РµРєС‚РѕСЂ Р·Р°РґСЂРµР»РµРЅРёСЏ С‚РµР»Р° </param>
     private void SeparateBodies(RigidBody bodyA, RigidBody bodyB, Vector2f normal, float depth)
     {
         Vector2f mtv = normal * depth;
@@ -229,9 +229,9 @@ public class World
     }
 
     /// <summary>
-    /// Разрешение столкновения
+    /// Р Р°Р·СЂРµС€РµРЅРёРµ СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ
     /// </summary>
-    /// <param name="contact"> Контакт между двумя телами </param>
+    /// <param name="contact"> РљРѕРЅС‚Р°РєС‚ РјРµР¶РґСѓ РґРІСѓРјСЏ С‚РµР»Р°РјРё </param>
     private void ResolveCollisionBase(Manifold contact)
     {
         RigidBody bodyA = contact.BodyA;
@@ -257,9 +257,9 @@ public class World
 
 
     /// <summary>
-    /// Применяем трение
+    /// РџСЂРёРјРµРЅСЏРµРј С‚СЂРµРЅРёРµ
     /// </summary>
-    /// <param name="contact"> Контакт между двумя телами </param>
+    /// <param name="contact"> РљРѕРЅС‚Р°РєС‚ РјРµР¶РґСѓ РґРІСѓРјСЏ С‚РµР»Р°РјРё </param>
     private void ApplayFriction(Manifold contact)
     {
         RigidBody bodyA = contact.BodyA;
@@ -287,13 +287,13 @@ public class World
     }
 
     /// <summary>
-    /// Получить импульс обекта
+    /// РџРѕР»СѓС‡РёС‚СЊ РёРјРїСѓР»СЊСЃ РѕР±РµРєС‚Р°
     /// </summary>
-    /// <param name="normal"> Вектор нормали </param>
-    /// <param name="relativeVeloity"> Скороть между двумя телами </param>
-    /// <param name="e"> Минамальная упругость </param>
-    /// <param name="invMassA"> Инверсная масса тела А </param>
-    /// <param name="invMassB"> Инверсная масса тела В </param>
+    /// <param name="normal"> Р’РµРєС‚РѕСЂ РЅРѕСЂРјР°Р»Рё </param>
+    /// <param name="relativeVeloity"> РЎРєРѕСЂРѕС‚СЊ РјРµР¶РґСѓ РґРІСѓРјСЏ С‚РµР»Р°РјРё </param>
+    /// <param name="e"> РњРёРЅР°РјР°Р»СЊРЅР°СЏ СѓРїСЂСѓРіРѕСЃС‚СЊ </param>
+    /// <param name="invMassA"> РРЅРІРµСЂСЃРЅР°СЏ РјР°СЃСЃР° С‚РµР»Р° Рђ </param>
+    /// <param name="invMassB"> РРЅРІРµСЂСЃРЅР°СЏ РјР°СЃСЃР° С‚РµР»Р° Р’ </param>
     /// <returns></returns>
     private Vector2f GetObjectMoment(Vector2f normal, Vector2f relativeVeloity, float e, float invMassA, float invMassB)
     {
@@ -305,9 +305,9 @@ public class World
 
 
     /// <summary>
-    /// Раздление столкноения с врашением
+    /// Р Р°Р·РґР»РµРЅРёРµ СЃС‚РѕР»РєРЅРѕРµРЅРёСЏ СЃ РІСЂР°С€РµРЅРёРµРј
     /// </summary>
-    /// <param name="contact"> Точка контакта между двумя телами </param>
+    /// <param name="contact"> РўРѕС‡РєР° РєРѕРЅС‚Р°РєС‚Р° РјРµР¶РґСѓ РґРІСѓРјСЏ С‚РµР»Р°РјРё </param>
     private void ResolveCollisionWhithRotation(Manifold contact)
     {
         RigidBody bodyA = contact.BodyA;
@@ -388,9 +388,9 @@ public class World
 
 
     /// <summary>
-    /// Разделение столкновения с врашением и трением
+    /// Р Р°Р·РґРµР»РµРЅРёРµ СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ СЃ РІСЂР°С€РµРЅРёРµРј Рё С‚СЂРµРЅРёРµРј
     /// </summary>
-    /// <param name="contact"> Точка контакта между двумя телами </param>
+    /// <param name="contact"> РўРѕС‡РєР° РєРѕРЅС‚Р°РєС‚Р° РјРµР¶РґСѓ РґРІСѓРјСЏ С‚РµР»Р°РјРё </param>
     private void ResolveCollisionWhithRotationAndFriction(Manifold contact)
     {
         RigidBody bodyA = contact.BodyA;
